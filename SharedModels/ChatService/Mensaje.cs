@@ -6,12 +6,11 @@ namespace SharedModels.ChatService
 {
     class Mensaje : EntityBase
     {
-        public int Id_Mensaje { get; set; }
-        //FK
-        public int ChatId { get; set; }
-        //FK
+        public int SalaId { get; set; }
         public int ParticipanteId { get; set; }
         public string Contenido { get; set; }
-        public DateTime Hora_Envio { get; set; }
+        public DateTime Hora_Fecha_Envio { get; set; }
+        public string Url_Archivo { get; set; }
+        public bool Privado { get; set; }
     }
 }
