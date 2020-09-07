@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SharedModels.UserService
 {
-    class Persona : EntityBase
+    public class Persona : EntityBase
     {
         [Required]
         public int idPersona { get; set; }
