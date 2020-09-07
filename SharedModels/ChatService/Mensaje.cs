@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SharedModels.ChatService
 {
     public class Mensaje : EntityBase
     {
+        public int ParticipanteId { get; set; }
+        [ForeignKey("ParticipanteId")]
         public Participante Participante { get; set; }
         public string Contenido { get; set; }
         public DateTime Hora_Fecha_Envio { get; set; }
