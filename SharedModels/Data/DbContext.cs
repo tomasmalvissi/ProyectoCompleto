@@ -12,7 +12,7 @@ namespace SharedModels.Data
 {
     public class DbContext : IdentityDbContext
     {
-        public DbContext(DbContextOptions options) : base(options)
+        public DbContext(DbContextOptions<DbContext> options) : base(options)
         {
 
         }
