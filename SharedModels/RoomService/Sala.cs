@@ -6,7 +6,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class Sala : EntityBase
 {
-
     public string NombreSala { get; set; }
     public DateTime? FechaBaja { get; set; }
     public DateTime? FechaUltimoUso { get; set; }

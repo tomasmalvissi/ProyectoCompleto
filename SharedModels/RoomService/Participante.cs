@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 public class Participante : EntityBase
 {
-    public int Id_Participante { get; set; }
     public string Email { get; set; }
     public string Token { get; set; }
     public DateTime FechaAlta { get; set; }
