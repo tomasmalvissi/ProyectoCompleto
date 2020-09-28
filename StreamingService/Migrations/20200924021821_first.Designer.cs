@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StreamingAPI;
 
 namespace StreamingAPI.Migrations
 {
     [DbContext(typeof(StreamingDBContext))]
-    partial class StreamingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200924021821_first")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,14 +224,9 @@ namespace StreamingAPI.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SalaId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("DuenioId");
-
-                    b.HasIndex("SalaId");
 
                     b.ToTable("VideoRooms");
                 });
@@ -364,10 +361,6 @@ namespace StreamingAPI.Migrations
                     b.HasOne("Participante", "Duenio")
                         .WithMany()
                         .HasForeignKey("DuenioId");
-
-                    b.HasOne("Sala", "Sala")
-                        .WithMany()
-                        .HasForeignKey("SalaId");
                 });
 #pragma warning restore 612, 618
         }

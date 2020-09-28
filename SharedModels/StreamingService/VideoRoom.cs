@@ -10,5 +10,7 @@ namespace SharedModels.StreamingService
 		public string Nombre { get; set; }
 		public TimeSpan Duracion { get; set; }
 
+		public Sala Sala { get; set; }
+
 	}
 }
