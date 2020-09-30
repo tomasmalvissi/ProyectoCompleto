@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SharedModels.ChatService;
 using SharedModels.StreamingService;
 using SharedModels.UserService;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StreamingAPI
 {
-	public class StreamingDBContext : DbContext
+	public class StreamingDBContext : IdentityDbContext
 	{
 		public StreamingDBContext(DbContextOptions<StreamingDBContext> options)
 			: base(options)
