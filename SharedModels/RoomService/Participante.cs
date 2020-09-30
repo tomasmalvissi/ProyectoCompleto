@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using SharedModels;
+using SharedModels.RoomService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,14 +14,7 @@ public class Participante : EntityBase
     public List<Asistencia> Asistencia { get; set; }
     [NotMapped]
     public List<Sala> Salas { get; set; }
-    public Roles Rol { get; set; }
+    public List<SalaParticipante> SalaParticipantes { get; set; }
 
 }
-public enum Roles
-{
-    Propietario = 1,
-    Administrador = 2,
-    Invitado = 3,
-    Oyente = 4
 
-};

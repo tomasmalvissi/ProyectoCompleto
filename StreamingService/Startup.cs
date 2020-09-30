@@ -26,7 +26,7 @@ namespace StreamingAPI
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-			services.AddDbContext<StreamingDBContext>(config =>
+			services.AddDbContext<DbContext>(config =>
 			{
 				config.UseSqlServer(Configuration.GetConnectionString("streamingdb"));
 			});

@@ -7,8 +7,9 @@ using SharedModels.StreamingService;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SharedModels.RoomService;
 
-namespace SharedModels.Data
+namespace StreamingAPI
 {
     public class DbContext : IdentityDbContext
     {
@@ -16,6 +17,13 @@ namespace SharedModels.Data
         {
 
         }
+
+        //Conexion de muchos a muchos entre Sala y Participante 
+        protected override void OnModelCreating(ModelBuilder Modelbuilder)
+        {
+            Modelbuilder.Entity<SalaParticipante>().HasKey(x => new { x.Id_Sala, x.Id_Participante });
+        }
+
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Mensaje> Mensajes { get; set; }
@@ -24,6 +32,8 @@ namespace SharedModels.Data
         public DbSet<Sala> Salas { get; set; }
         public DbSet<Participante> Participantes { get; set; }
         public DbSet<Asistencia> Asistencias { get; set; }
+        public DbSet<SalaParticipante> SalaParticipantes { get; set; }
 
     }
 }
+
