@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -21,5 +22,7 @@ namespace SharedModels.UserService
         public string Localidad { get; set; }
         public string Direccion { get; set; }
         public string FotoPerfil { get; set; }
+        public IdentityUser IdUser { get; set; }
+
     }
 }

@@ -23,9 +23,10 @@ namespace StreamingAPI
         {
             Modelbuilder.Entity<SalaParticipante>().HasKey(x => new { x.Id_Sala, x.Id_Participante });
         }
-
+        
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Persona> Personas { get; set; }
+        public DbSet<UserEMPRESA> UserEMPRESAS { get; set; }
         public DbSet<Mensaje> Mensajes { get; set; }
         public DbSet<ConferenceRecordFile> ConferenceRecordFiles { get; set; }
         public DbSet<VideoRoom> VideoRooms { get; set; }
