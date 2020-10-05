@@ -9,8 +9,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Sala : EntityBase
 {
     public string NombreSala { get; set; }
-    //public string TitularDeSala { get; set; }
-    //public string AsistenteSala { get; set; }
     public DateTime? FechaBaja { get; set; }
     public DateTime? FechaUltimoUso { get; set; }
     public DateTime? TiempoAcumuladoUso { get; set; }
@@ -20,6 +18,5 @@ public class Sala : EntityBase
     public string PasswordSala { get; set; }
     public bool ControlAsistencia { get; set; }
     public bool EsPersistente { get; set; }
-    public IdentityRole IdentityRole { get; set; }
-   
+
  }

@@ -10,5 +10,6 @@ namespace SharedModels.RoomService
         public int Id_Participante { get; set; }
         public Sala Sala { get; set;}
         public Participante Participante { get; set; }
+
     }
 }
