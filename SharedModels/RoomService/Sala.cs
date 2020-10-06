@@ -13,10 +13,10 @@ public class Sala : EntityBase
     public DateTime? FechaUltimoUso { get; set; }
     public DateTime? TiempoAcumuladoUso { get; set; }
     [NotMapped]
-    public List<Participante> Participante { get; set; }
-    public List<SalaParticipante> SalaParticipantes { get; set; }
+    public List<UserEmp> UserEmps { get; set; }
+    public List<SalaUserEmp> SalaUserEmps { get; set; }
     public string PasswordSala { get; set; }
     public bool ControlAsistencia { get; set; }
     public bool EsPersistente { get; set; }
 
- }
+}

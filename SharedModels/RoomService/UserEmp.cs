@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class Participante : EntityBase
+public class UserEmp : EntityBase
 {
     public string Email { get; set; }
     public string Token { get; set; }
@@ -14,9 +14,10 @@ public class Participante : EntityBase
     public List<Asistencia> Asistencia { get; set; }
     [NotMapped]
     public List<Sala> Salas { get; set; }
-    public List<SalaParticipante> SalaParticipantes { get; set; }
+    public List<SalaUserEmp> SalaUserEmps { get; set; }
     public Roles Rol { get; set; }
 
+    //El UserEmp es el Participante - Una empresa puede tener muchas salas 
 }
 public enum Roles
 {
