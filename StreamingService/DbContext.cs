@@ -25,7 +25,7 @@ namespace StreamingAPI
         }
         
         public DbSet<Empresa> Empresas { get; set; }
-        public DbSet<Persona> Personas { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
         public DbSet<UserEMPRESA> UserEMPRESAS { get; set; }
         public DbSet<Mensaje> Mensajes { get; set; }
         public DbSet<ConferenceRecordFile> ConferenceRecordFiles { get; set; }

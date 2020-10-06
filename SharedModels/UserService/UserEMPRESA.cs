@@ -11,8 +11,10 @@ namespace SharedModels.UserService
         [Required]
         public string Id { get; set; }
         [Required]
+        public IdentityUser IdUser { get; set; }
+        [Required]
         public Empresa IdEmpresa { get; set; }
         [Required]
-        public IdentityUser IdUser { get; set; }
+        public Cliente IdCliente { get; set; }
     }
 }
