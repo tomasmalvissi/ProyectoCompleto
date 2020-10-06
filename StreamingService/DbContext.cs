@@ -18,10 +18,10 @@ namespace StreamingAPI
 
         }
 
-        //Conexion de muchos a muchos entre Sala y Participante 
+        //Conexion de muchos a muchos entre Sala y UserEmp 
         protected override void OnModelCreating(ModelBuilder Modelbuilder)
         {
-            Modelbuilder.Entity<SalaParticipante>().HasKey(x => new { x.Id_Sala, x.Id_Participante });
+            Modelbuilder.Entity<SalaUserEmp>().HasKey(x => new { x.Id_Sala, x.Id_UserEmp });
         }
         
         public DbSet<Empresa> Empresas { get; set; }
@@ -31,9 +31,9 @@ namespace StreamingAPI
         public DbSet<ConferenceRecordFile> ConferenceRecordFiles { get; set; }
         public DbSet<VideoRoom> VideoRooms { get; set; }
         public DbSet<Sala> Salas { get; set; }
-        public DbSet<Participante> Participantes { get; set; }
+        public DbSet<UserEmp> UserEmps { get; set; }
         public DbSet<Asistencia> Asistencias { get; set; }
-        public DbSet<SalaParticipante> SalaParticipantes { get; set; }
+        public DbSet<SalaUserEmp> SalaUserEmps { get; set; }
 
     }
 }
