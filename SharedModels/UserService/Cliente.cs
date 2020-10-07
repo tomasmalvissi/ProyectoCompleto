@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace SharedModels.UserService
 {
-    public class Persona : EntityBase
+    public class Cliente : EntityBase
     {
         [Required]
-        public string Nombre { get; set; }
+        public string NombreCompleto { get; set; }
         [Required]
-        public string Apellido { get; set; }
+        public string CUIL { get; set; }
         [Required]
         public DateTime FechaNac { get; set; }
         [Required]
@@ -20,6 +21,7 @@ namespace SharedModels.UserService
         [Required]
         public string Localidad { get; set; }
         public string Direccion { get; set; }
-        public string FotoPerfil { get; set; }
+        public string Foto { get; set; }
+
     }
 }
