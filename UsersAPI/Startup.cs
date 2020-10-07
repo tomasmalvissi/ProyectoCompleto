@@ -11,8 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SharedModels.Data;
-using DbContext = SharedModels.Data.DbContext;
 
 namespace UsersAPI
 {
@@ -30,7 +28,7 @@ namespace UsersAPI
         {
             services.AddControllers();
 
-            services.AddDbContext<DbContext>(
+            services.AddDbContext<UsersAPI.DbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("ConexUser")));
 
         }

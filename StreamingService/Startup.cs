@@ -26,10 +26,8 @@ namespace StreamingAPI
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-			services.AddDbContext<DbContext>(config =>
-			{
-				config.UseSqlServer(Configuration.GetConnectionString("streamingdb"));
-			});
+			services.AddDbContext<StreamingDBContext>(
+				options  => options.UseSqlServer( Configuration.GetConnectionString("streamingdb")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

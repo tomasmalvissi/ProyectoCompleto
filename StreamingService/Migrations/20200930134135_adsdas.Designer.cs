@@ -10,8 +10,8 @@ using StreamingAPI;
 namespace StreamingAPI.Migrations
 {
     [DbContext(typeof(StreamingDBContext))]
-    [Migration("20200928150243_Added sala relation")]
-    partial class Addedsalarelation
+    [Migration("20200930134135_adsdas")]
+    partial class adsdas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,14 +46,30 @@ namespace StreamingAPI.Migrations
                     b.Property<int?>("ParticipanteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rol_Usuario")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ParticipanteId");
 
                     b.ToTable("Asistencias");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentityRole");
                 });
 
             modelBuilder.Entity("Participante", b =>
@@ -78,9 +94,6 @@ namespace StreamingAPI.Migrations
                     b.Property<DateTime>("FechaBaja")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Rol")
-                        .HasColumnType("int");
-
                     b.Property<string>("Token")
                         .HasColumnType("nvarchar(max)");
 
@@ -91,7 +104,7 @@ namespace StreamingAPI.Migrations
 
                     b.HasIndex("VideoRoomId");
 
-                    b.ToTable("Participantes");
+                    b.ToTable("Participante");
                 });
 
             modelBuilder.Entity("Sala", b =>
@@ -119,6 +132,9 @@ namespace StreamingAPI.Migrations
                     b.Property<DateTime?>("FechaUltimoUso")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("IdentityRoleId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("NombreSala")
                         .HasColumnType("nvarchar(max)");
 
@@ -129,6 +145,8 @@ namespace StreamingAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdentityRoleId");
 
                     b.ToTable("Salas");
                 });
@@ -166,6 +184,38 @@ namespace StreamingAPI.Migrations
                     b.HasIndex("ParticipanteId");
 
                     b.ToTable("Mensajes");
+                });
+
+            modelBuilder.Entity("SharedModels.RoomService.SalaParticipante", b =>
+                {
+                    b.Property<int>("Id_Sala")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id_Participante")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ParticipanteId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SalaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id_Sala", "Id_Participante");
+
+                    b.HasIndex("ParticipanteId");
+
+                    b.HasIndex("SalaId");
+
+                    b.ToTable("SalaParticipantes");
                 });
 
             modelBuilder.Entity("SharedModels.StreamingService.ConferenceRecordFile", b =>
@@ -236,97 +286,6 @@ namespace StreamingAPI.Migrations
                     b.ToTable("VideoRooms");
                 });
 
-            modelBuilder.Entity("SharedModels.UserService.Empresa", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("CUIL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Logo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Miembros")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NombreEmpresa")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Pais")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Provincia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Empresas");
-                });
-
-            modelBuilder.Entity("SharedModels.UserService.Persona", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Apellido")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("FechaNac")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FotoPerfil")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Localidad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Pais")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Provincia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Personas");
-                });
-
             modelBuilder.Entity("Asistencia", b =>
                 {
                     b.HasOne("Participante", "Participante")
@@ -341,6 +300,13 @@ namespace StreamingAPI.Migrations
                         .HasForeignKey("VideoRoomId");
                 });
 
+            modelBuilder.Entity("Sala", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", "IdentityRole")
+                        .WithMany()
+                        .HasForeignKey("IdentityRoleId");
+                });
+
             modelBuilder.Entity("SharedModels.ChatService.Mensaje", b =>
                 {
                     b.HasOne("Participante", "Participante")
@@ -348,6 +314,17 @@ namespace StreamingAPI.Migrations
                         .HasForeignKey("ParticipanteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SharedModels.RoomService.SalaParticipante", b =>
+                {
+                    b.HasOne("Participante", "Participante")
+                        .WithMany("SalaParticipantes")
+                        .HasForeignKey("ParticipanteId");
+
+                    b.HasOne("Sala", "Sala")
+                        .WithMany("SalaParticipantes")
+                        .HasForeignKey("SalaId");
                 });
 
             modelBuilder.Entity("SharedModels.StreamingService.ConferenceRecordFile", b =>

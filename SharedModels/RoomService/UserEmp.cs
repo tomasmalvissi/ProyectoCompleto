@@ -11,7 +11,7 @@ public class UserEMPRESA : EntityBase
     public string Token { get; set; }
     public DateTime FechaAlta { get; set; }
     public DateTime FechaBaja { get; set; }
-    public List<Asistencia> Asistencia { get; set; }
+    public List<Asistencia> Asistencia { get; set;}
     [NotMapped]
     public List<Sala> Salas { get; set; }
     public List<SalaUserEMPRESA> SalaUserEMPRESAS { get; set; }
