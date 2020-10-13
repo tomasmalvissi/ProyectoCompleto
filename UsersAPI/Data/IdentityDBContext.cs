@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SharedModels.ChatService;
 using SharedModels.RoomService;
@@ -11,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace UsersAPI.Data
 {
-	public class IdentityDBContext : IdentityDbContext
+	public class IdentityDBContext : IdentityDbContext<IdentityUser>
 	{
-		public IdentityDBContext(DbContextOptions<DbContext> options) : base(options)
+		public IdentityDBContext(DbContextOptions options) : base(options)
 		{
 			
 		}
