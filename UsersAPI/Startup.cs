@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using UsersAPI.Data;
 
 namespace UsersAPI
 {
@@ -28,7 +29,7 @@ namespace UsersAPI
         {
             services.AddControllers();
 
-            services.AddDbContext<UsersAPI.DbContext>(
+            services.AddDbContext<IdentityDBContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("ConexUser")));
 
         }

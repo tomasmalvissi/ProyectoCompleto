@@ -9,18 +9,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UsersAPI
+namespace UsersAPI.Data
 {
-	public class DbContext : IdentityDbContext
+	public class IdentityDBContext : IdentityDbContext
 	{
-		public DbContext(DbContextOptions<DbContext> options)
-			: base(options)
-		{ }
+		public IdentityDBContext(DbContextOptions<DbContext> options) : base(options)
+		{
+			
+		}
 
 		public DbSet<Empresa> Empresas { get; set; }
-		public DbSet<Persona> Personas { get; set; }
-		public DbSet<Participante> Participantes { get; set; }
-
+		public DbSet<Cliente> Clientes { get; set; }
+		public DbSet<UserEMPRESA> UserEMPRESAS { get; set; }
 
 	}
 }
