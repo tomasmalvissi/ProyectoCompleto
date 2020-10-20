@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Data
+namespace SharedModels.UserService
 {
     public class Cliente : EntityBase
     {

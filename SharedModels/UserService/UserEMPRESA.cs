@@ -1,5 +1,4 @@
-﻿using DAL.Data;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SharedModels.UserService
 {
