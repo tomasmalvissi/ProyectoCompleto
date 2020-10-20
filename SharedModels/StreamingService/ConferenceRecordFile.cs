@@ -6,7 +6,7 @@ namespace SharedModels.StreamingService
 {
 	public class ConferenceRecordFile: EntityBase
 	{
-		public Participante Duenio { get; set; }
+		public UserEMPRESA Duenio { get; set; }
 		public string NombreArchivo { get; set; }
 		public string Direccion { get; set; }
 		public VideoRoom VideoRoom { get; set; }
