@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
+﻿using DAL.Data;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace SharedModels.UserService
 {
@@ -11,7 +8,7 @@ namespace SharedModels.UserService
         [Required]
         public string Id { get; set; }
         [Required]
-        public IdentityUser IdUser { get; set; }
+        public int IdUser { get; set; }
         [Required]
         public Empresa IdEmpresa { get; set; }
         [Required]

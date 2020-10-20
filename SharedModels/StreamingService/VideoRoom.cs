@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedModels.UserService;
+using System;
 using System.Collections.Generic;
 
 namespace SharedModels.StreamingService

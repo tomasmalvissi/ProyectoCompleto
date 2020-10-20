@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedModels.UserService;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,8 +9,8 @@ namespace SharedModels.RoomService
     {
         public int Id_Sala { get; set; }
         public int Id_UserEMPRESA { get; set; }
-        public Sala Sala { get; set;}
-        public UserEMPRESA UserEMPRESAS{ get; set; }
+        public Sala Sala { get; set; }
+        public UserEMPRESA UserEMPRESAS { get; set; }
 
     }
 }

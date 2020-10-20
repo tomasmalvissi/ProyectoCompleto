@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Identity;
-using SharedModels;
+﻿using SharedModels;
 using SharedModels.RoomService;
+using SharedModels.UserService;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 public class Sala : EntityBase

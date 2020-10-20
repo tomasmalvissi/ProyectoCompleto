@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using SharedModels;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
-namespace SharedModels.UserService
+namespace DAL.Data
 {
     public class Cliente : EntityBase
     {

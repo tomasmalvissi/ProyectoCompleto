@@ -1,5 +1,6 @@
-using Microsoft.AspNetCore.Identity;
-using SharedModels;
+﻿using SharedModels;
+using SharedModels.RoomService;
+using SharedModels.UserService;
 using System;
 
 public class Asistencia : EntityBase
