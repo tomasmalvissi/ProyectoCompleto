@@ -2,7 +2,7 @@
 
 namespace SharedModels.UserService
 {
-    public class UserEMPRESA
+    public class UserEMPRESA : EntityBase
     {
         [Required]
         public string Id { get; set; }

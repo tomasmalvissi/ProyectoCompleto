@@ -10,7 +10,7 @@ namespace SharedModels.ChatService
     {
         public int ParticipanteId { get; set; }
         [ForeignKey("ParticipanteId")]
-        public UserEmp Participante { get; set; }
+        public Participante Participante { get; set; }
         public string Contenido { get; set; }
         public DateTime Hora_Fecha_Envio { get; set; }
         public string Url_Archivo { get; set; }
