@@ -24,7 +24,7 @@ namespace DAL.Data
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Empresa> Empresas { get; set; }
-        public DbSet<UserEMPRESA> UserEMPRESAS { get; set; }
+        public DbSet<Participante> Participantes { get; set; }
         public DbSet<Mensaje> Mensajes { get; set; }
         public DbSet<ConferenceRecordFile> ConferenceRecordFiles { get; set; }
         public DbSet<VideoRoom> VideoRooms { get; set; }
