@@ -1,10 +1,12 @@
-﻿using SharedModels;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using SharedModels;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace SharedModels.UserService
 {
-    public class Cliente : EntityBase
+    public class Cliente : IdentityUser
     {
         [Required]
         public string NombreCompleto { get; set; }
@@ -20,6 +22,7 @@ namespace SharedModels.UserService
         public string Localidad { get; set; }
         public string Direccion { get; set; }
         public string Foto { get; set; }
+    
 
     }
 }

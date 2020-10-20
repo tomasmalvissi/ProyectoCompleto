@@ -48,7 +48,7 @@ namespace UserService.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCliente(int id, Cliente cliente)
         {
-            if (id != cliente.Id)
+            if (id.ToString().Equals(cliente.Id))
             {
                 return BadRequest();
             }
@@ -104,7 +104,7 @@ namespace UserService.Controllers
 
         private bool ClienteExists(int id)
         {
-            return _context.Clientes.Any(e => e.Id == id);
+            return _context.Clientes.Any(e => e.Id == id.ToString());
         }
     }
 }
