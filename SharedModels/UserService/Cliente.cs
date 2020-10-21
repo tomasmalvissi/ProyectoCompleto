@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SharedModels.UserService
 {
-    public class Cliente : IdentityUser
+    public class Cliente : EntityBase
     {
         [Required]
         public string NombreCompleto { get; set; }
@@ -22,7 +22,7 @@ namespace SharedModels.UserService
         public string Localidad { get; set; }
         public string Direccion { get; set; }
         public string Foto { get; set; }
-    
-
+        public IdentityUser Usuario { get; set; }
+        
     }
 }

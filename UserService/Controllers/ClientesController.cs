@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DAL.Data;
 using SharedModels.UserService;
+using Microsoft.AspNetCore.Identity;
 
 namespace UserService.Controllers
 {
@@ -15,6 +16,7 @@ namespace UserService.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
         public ClientesController(DataContext context)
         {
@@ -43,8 +45,6 @@ namespace UserService.Controllers
         }
 
         // PUT: api/Clientes/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCliente(int id, Cliente cliente)
         {
@@ -75,8 +75,6 @@ namespace UserService.Controllers
         }
 
         // POST: api/Clientes
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
@@ -104,7 +102,7 @@ namespace UserService.Controllers
 
         private bool ClienteExists(int id)
         {
-            return _context.Clientes.Any(e => e.Id == id.ToString());
+            return _context.Clientes.Any(e => e.Id == id);
         }
     }
 }
