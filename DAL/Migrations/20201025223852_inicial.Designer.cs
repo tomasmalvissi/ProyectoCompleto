@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201020153124_migracion")]
-    partial class migracion
+    [Migration("20201025223852_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -470,7 +470,12 @@ namespace DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UsuarioId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Clientes");
                 });
@@ -550,7 +555,7 @@ namespace DAL.Migrations
 
                     b.HasIndex("VideoRoomId");
 
-                    b.ToTable("UserEMPRESAS");
+                    b.ToTable("UserEMPRESA");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("UserEMPRESA");
                 });
@@ -675,6 +680,13 @@ namespace DAL.Migrations
                     b.HasOne("Sala", "Sala")
                         .WithMany()
                         .HasForeignKey("SalaId");
+                });
+
+            modelBuilder.Entity("SharedModels.UserService.Cliente", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId");
                 });
 
             modelBuilder.Entity("SharedModels.UserService.UserEMPRESA", b =>
