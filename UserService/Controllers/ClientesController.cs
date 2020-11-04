@@ -16,7 +16,6 @@ namespace UserService.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly DataContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
 
         public ClientesController(DataContext context)
         {
