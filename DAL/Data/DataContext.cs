@@ -30,6 +30,6 @@ namespace DAL.Data
         public DbSet<VideoRoom> VideoRooms { get; set; }
         public DbSet<Sala> Salas { get; set; }
         public DbSet<Asistencia> Asistencias { get; set; }
-        public DbSet<SalaUserEMPRESA> salaUserEMPRESAS { get; set; }
+        public DbSet<SalaParticipante> SalaParticipante { get; set; }
     }
 }
