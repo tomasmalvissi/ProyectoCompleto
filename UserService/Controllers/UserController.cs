@@ -20,14 +20,12 @@ namespace UserService.Controllers
     public class UserController : ControllerBase
     {
 
-        private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> userManager;
         private readonly DataContext _context;
 
-        public UserController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, DataContext context)
+        public UserController(UserManager<IdentityUser> userManager, DataContext context)
         {
             _context = context;
-            this.signInManager = signInManager;
             this.userManager = userManager;
         }
 
