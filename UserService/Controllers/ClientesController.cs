@@ -62,11 +62,7 @@ namespace UserService.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCliente(string id, Cliente cliente)
         {
-            if (id.ToString().Equals(cliente.IdentityUsuario.Id))
-            {
-                return BadRequest();
-            }
-
+            cliente.DateModified = DateTime.Now;
             _context.Entry(cliente).State = EntityState.Modified;
 
             try
@@ -86,16 +82,6 @@ namespace UserService.Controllers
             }
 
             return NoContent();
-        }
-
-        // POST: api/Clientes
-        [HttpPost]
-        public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
-        {
-            _context.Clientes.Add(cliente);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCliente", new { id = cliente.IdentityUsuario.Id }, cliente);
         }
 
         // DELETE: api/Clientes/5

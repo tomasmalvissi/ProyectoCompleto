@@ -1,0 +1,35 @@
+﻿Hola, estos son los parametros y valores para poder consumir esta API:
+
+--1: CREACION DE USER Y CLIENTE:	/api/User/register
+	{
+		"UserName": "tomy",
+		"Email": "tom@gmail.com",
+		"Password": "1234.TMm",
+		"ConfirmPassword": "1234.TMm",
+		"NombreCompleto" : "Tomás Malvissi",
+		"CUIL" : "2141887618",
+		"FechaNac" : "1999-11-15T00:00:00"
+		"Direccion" : "Pontin",
+		"Provincia" : "Cordoba",
+		"Pais" : "Argentina"
+	}
+
+--2 LOGIN DE USER:		/api/User/login
+	{
+		"UserName" : "Tom",
+		"Password" : "Tomy.Dev123"
+	}
+
+--3 PUT(Modificar) CLIENTE:	/api/Clientes/{id}
+	{
+		"nombreCompleto": "Aca toy probando hacer un cambio",
+		"cuil": "6666666666",
+		"fechaNac": "1999-11-15T00:00:00",
+		"foto": null,
+		"direccion": "La vida",
+		"provincia": "Misma",
+		"pais": "Argentina",
+		"id": 5,
+		"dateCreated": "2020-11-20T04:08:27.9301351"
+	}
+

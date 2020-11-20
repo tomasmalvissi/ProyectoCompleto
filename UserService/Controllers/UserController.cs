@@ -31,6 +31,7 @@ namespace UserService.Controllers
             this.userManager = userManager;
         }
 
+        //POST: REGISTRAR USER
         [HttpPost]
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] UserDetails userDetails)
@@ -54,20 +55,23 @@ namespace UserService.Controllers
                 return new BadRequestObjectResult(new { Message = "User Registration Failed", Errors = dictionary });
             }
 
-            Cliente newClient = new Cliente();// { userDetails.Direccion, userDetails.Provincia, identityUser, userDetails.nombreCompleto, userDetails.CUIL, userDetails.FechaNac }
-            newClient.IdentityUsuario = identityUser;
-            newClient.NombreCompleto = userDetails.NombreCompleto;
-            newClient.Pais = userDetails.Pais;
-            newClient.Provincia = userDetails.Provincia;
-            newClient.CUIL = userDetails.CUIL;
-            newClient.DateCreated = DateTime.UtcNow;
-            newClient.FechaNac = userDetails.FechaNac;
-            newClient.Direccion = userDetails.Direccion;
+            Cliente newClient = new Cliente
+            {
+                IdentityUsuario = identityUser,
+                DateCreated = DateTime.Now,
+                NombreCompleto = userDetails.NombreCompleto,
+                CUIL = userDetails.CUIL,
+                FechaNac = userDetails.FechaNac,
+                Direccion = userDetails.Direccion,
+                Provincia = userDetails.Provincia,
+                Pais = userDetails.Pais
+            };
             await PostCliente(newClient);
 
-            return Ok(new { Message = "User Reigstration Successful" });
+            return Ok(new { Message = "User Registration Successful" });
         }
 
+        //POST: LOGEAR USER
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginCredentials credentials)
@@ -105,6 +109,7 @@ namespace UserService.Controllers
             return Ok(new { Message = "You are logged in" });
         }
 
+        //POST: LOGOUT USER
         [HttpPost]
         [Route("Logout")]
         public async Task<IActionResult> Logout()
@@ -113,6 +118,7 @@ namespace UserService.Controllers
             return Ok(new { Message = "You are logged out" });
         }
 
+        //POST DE CLIENTE LLAMADO EN EL POST DE REGISTRAR USUARIO
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
             _context.Clientes.Add(cliente);
