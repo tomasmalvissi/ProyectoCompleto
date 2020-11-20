@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DAL.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
@@ -21,9 +22,11 @@ namespace UserService.Controllers
 
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> userManager;
+        private readonly DataContext _context;
 
-        public UserController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public UserController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, DataContext context)
         {
+            _context = context;
             this.signInManager = signInManager;
             this.userManager = userManager;
         }
@@ -38,6 +41,7 @@ namespace UserService.Controllers
             }
 
             var identityUser = new IdentityUser() { UserName = userDetails.UserName, Email = userDetails.Email };
+            var id = userManager.GetUserIdAsync(identityUser);
             var result = await userManager.CreateAsync(identityUser, userDetails.Password);
             if (!result.Succeeded)
             {
@@ -49,6 +53,17 @@ namespace UserService.Controllers
 
                 return new BadRequestObjectResult(new { Message = "User Registration Failed", Errors = dictionary });
             }
+
+            Cliente newClient = new Cliente();// { userDetails.Direccion, userDetails.Provincia, identityUser, userDetails.nombreCompleto, userDetails.CUIL, userDetails.FechaNac }
+            newClient.IdentityUsuario = identityUser;
+            newClient.NombreCompleto = userDetails.NombreCompleto;
+            newClient.Pais = userDetails.Pais;
+            newClient.Provincia = userDetails.Provincia;
+            newClient.CUIL = userDetails.CUIL;
+            newClient.DateCreated = DateTime.UtcNow;
+            newClient.FechaNac = userDetails.FechaNac;
+            newClient.Direccion = userDetails.Direccion;
+            await PostCliente(newClient);
 
             return Ok(new { Message = "User Reigstration Successful" });
         }
@@ -96,6 +111,14 @@ namespace UserService.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Ok(new { Message = "You are logged out" });
+        }
+
+        public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
+        {
+            _context.Clientes.Add(cliente);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetCliente", new { id = cliente.IdentityUsuario.Id }, cliente);
         }
     }
 }

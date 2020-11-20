@@ -16,5 +16,24 @@ namespace UserService.Models
 
         [Required]
         public string Email { get; set; }
+        [Required]
+        public string Direccion { get; set; }
+        [Required]
+        public int Id { get; set; }
+
+        [Required]
+        public string Provincia { get; set; }
+
+        public string Pais { get; set; }
+
+        [Required]
+        public string NombreCompleto { get; set; }
+        [Required]
+        public string CUIL { get; set; }
+        [Required]
+        public DateTime FechaNac { get; set; }
+
+        public string Foto { get; set; }
+
     }
 }
