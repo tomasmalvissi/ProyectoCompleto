@@ -9,6 +9,8 @@ using SharedModels.UserService;
 
 namespace UserService.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class EmpresasController : Controller
     {
         private readonly DataContext _context;

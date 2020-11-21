@@ -1,6 +1,7 @@
 ﻿Hola, estos son los parametros y valores para poder consumir esta API:
 
---1: CREACION DE USER Y CLIENTE:	/api/User/register
+--1: CREACION DE USER Y CLIENTE O EMPRESA:	/api/User/register/Empresa
+															 /Cliente
 	{
 		"UserName": "tomy",
 		"Email": "tom@gmail.com",
@@ -33,3 +34,15 @@
 		"dateCreated": "2020-11-20T04:08:27.9301351"
 	}
 
+--4 PUT(Modificar) EMPRESA: /api/Empresas/{id}
+	{
+		"razonSocial": "EMPRESA SA",
+		"cuit": "2141887618",
+		"fechaInicioActividades": "0001-01-01T00:00:00",
+		"logo": "loguito1",
+		"direccion": "Pontin",
+		"provincia": "Cordoba",
+		"pais": "Argentina",
+		"id": 7,
+		"dateCreated": "2020-11-21T20:07:39.7705116"
+	}

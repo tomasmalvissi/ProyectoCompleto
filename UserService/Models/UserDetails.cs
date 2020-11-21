@@ -20,19 +20,14 @@ namespace UserService.Models
         [Required]
         public int Id { get; set; }
 
-        [Required]
         public string NombreCompleto { get; set; }
 
-        [Required]
         public string CUIL { get; set; }
 
-        [Required]
         public DateTime FechaNac { get; set; }
 
-        [Required]
         public string Direccion { get; set; }
 
-        [Required]
         public string Provincia { get; set; }
 
         public string Pais { get; set; }

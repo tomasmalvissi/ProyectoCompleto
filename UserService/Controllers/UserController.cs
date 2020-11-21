@@ -29,10 +29,10 @@ namespace UserService.Controllers
             this.userManager = userManager;
         }
 
-        //POST: REGISTRAR USER
+        //POST: REGISTRAR USER CLIENTE
         [HttpPost]
-        [Route("Register")]
-        public async Task<IActionResult> Register([FromBody] UserDetails userDetails)
+        [Route("Register/Cliente")]
+        public async Task<IActionResult> RegisterClient([FromBody] UserDetails userDetails)
         {
             if (!ModelState.IsValid || userDetails == null)
             {
@@ -65,6 +65,47 @@ namespace UserService.Controllers
                 Pais = userDetails.Pais
             };
             await PostCliente(newClient);
+
+            return Ok(new { Message = "User Registration Successful" });
+        }
+
+        //REGISTRAR USER EMPRESA
+        [HttpPost]
+        [Route("Register/Empresa")]
+        public async Task<IActionResult> RegisterEmp([FromBody] UserDetails userDetails)
+        {
+            if (!ModelState.IsValid || userDetails == null)
+            {
+                return new BadRequestObjectResult(new { Message = "User Registration Failed" });
+            }
+
+            var identityUser = new IdentityUser() { UserName = userDetails.UserName, Email = userDetails.Email };
+            var id = userManager.GetUserIdAsync(identityUser);
+            var result = await userManager.CreateAsync(identityUser, userDetails.Password);
+            if (!result.Succeeded)
+            {
+                var dictionary = new ModelStateDictionary();
+                foreach (IdentityError error in result.Errors)
+                {
+                    dictionary.AddModelError(error.Code, error.Description);
+                }
+
+                return new BadRequestObjectResult(new { Message = "User Registration Failed", Errors = dictionary });
+            }
+
+            Empresa newEmpresa = new Empresa
+            {
+                IdentityUsuario = identityUser,
+                DateCreated = DateTime.Now,
+                RazonSocial = userDetails.NombreCompleto,
+                CUIT = userDetails.CUIL,
+                FechaInicioActividades = userDetails.FechaNac,
+                Direccion = userDetails.Direccion,
+                Provincia = userDetails.Provincia,
+                Pais = userDetails.Pais,
+                Logo = userDetails.Foto
+            };
+            await PostEmpresa(newEmpresa);
 
             return Ok(new { Message = "User Registration Successful" });
         }
@@ -123,6 +164,15 @@ namespace UserService.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCliente", new { id = cliente.IdentityUsuario.Id }, cliente);
+        }
+
+        //POST DE EMPRESA LLAMADO EN EL POST DE REGISTRAR USUARIO
+        public async Task<ActionResult<Empresa>> PostEmpresa(Empresa empresa)
+        {
+            _context.Empresas.Add(empresa);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetEmpresa", new { id = empresa.IdentityUsuario.Id }, empresa);
         }
     }
 }
