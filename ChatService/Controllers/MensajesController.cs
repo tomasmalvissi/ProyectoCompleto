@@ -47,42 +47,28 @@ namespace ChatService.Controllers
         public Task<Int32> GetMensajeCount(int idsala)
         {
             return _context.Mensajes.Where(s => s.SalaId == idsala).CountAsync();
-
-
-            //var contador = _context.Mensajes.Where(s => s.SalaId == idsala).ToListAsync();
-
-            //foreach (var ParCount in )
-            //{
-            //    if (true)
-            //    {
-
-            //    }
-            //}
-
-            //return List<contador>;
         }
-        //Idpar = 1 contador = 10
 
 
         // GET: api/Mensajes/CantidadPorPart/(IdSala)
-        [HttpGet("CantidadPorPart/{idsala}")]
-        public Task<Int32> GetCountPorPart(int idsala, int idparticipante)
-        {
-            //var contador = _context.Mensajes.Where(s => s.SalaId == idsala)
-            //                                .Select()
-            //                                .ToLisAsync();
-            //                                //.Max();
+        //[HttpGet("CantidadPorPart/{idsala}")]
+        //public Task<Int32> GetCountPorPart(int idsala, int idparticipante)
+        //{
+        //    //var contador = _context.Mensajes.Where(s => s.SalaId == idsala)
+        //    //                                .Select()
+        //    //                                .ToLisAsync();
+        //    //                                //.Max();
 
-            //foreach (var ParCount in )
-            //{
-            //    if (true)
-            //    {
+        //    //foreach (var ParCount in )
+        //    //{
+        //    //    if (true)
+        //    //    {
 
-            //    }
-            //}
+        //    //    }
+        //    //}
 
-            //return List<contador>;
-        }
+        //    //return List<contador>;
+        //}
 
 
         // GET: api/Mensajes/bysala/5
