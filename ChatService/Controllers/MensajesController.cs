@@ -49,8 +49,8 @@ namespace ChatService.Controllers
             return _context.Mensajes.Where(s => s.SalaId == idsala).CountAsync();
         }
 
-        // GET: api/Mensajes/CantPorPart/?
-        [HttpGet("CantPorPart/{idsala}")]
+        // GET: api/Mensajes/cantidadpart/?
+        [HttpGet("cantidadpart/{idsala}")]
         public dynamic GetCountPorPart(int idsala)
         {
             var lista = (from m in _context.Mensajes
