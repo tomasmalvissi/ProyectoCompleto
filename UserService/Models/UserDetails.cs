@@ -34,5 +34,7 @@ namespace UserService.Models
 
         public string Foto { get; set; }
 
+        public int IdEmpresa { get; set; }
+
     }
 }
