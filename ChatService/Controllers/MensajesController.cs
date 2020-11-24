@@ -49,27 +49,29 @@ namespace ChatService.Controllers
             return _context.Mensajes.Where(s => s.SalaId == idsala).CountAsync();
         }
 
+        // GET: api/Mensajes/CantidadPorPart/?
+        [HttpGet("CantidadPorParticipante/{idsala}")]
+        public dynamic GetCountPorPart(int idsala)
+        {
+            //Devuelve los Id de los que enviaron msj y la cantidad que envió cada uno
+            return (from m in _context.Mensajes
+                    where m.SalaId == idsala
+                    group m by m.EmisorId into grupo
 
-        // GET: api/Mensajes/CantidadPorPart/(IdSala)
-        //[HttpGet("CantidadPorPart/{idsala}")]
-        //public Task<Int32> GetCountPorPart(int idsala, int idparticipante)
-        //{
-        //    //var contador = _context.Mensajes.Where(s => s.SalaId == idsala)
-        //    //                                .Select()
-        //    //                                .ToLisAsync();
-        //    //                                //.Max();
+                    select new
+                    {
+                        Emisor = grupo.Key,
+                        TotalEnviados = grupo.Count()
+                    }).ToList();
 
-        //    //foreach (var ParCount in )
-        //    //{
-        //    //    if (true)
-        //    //    {
 
-        //    //    }
-        //    //}
+            //var contador = _context.Mensajes
+            //    .Where(s => s.SalaId == idsala)
+            //    .GroupBy(p => new { p.EmisorId })
+            //    .Select(r => new { r.Key.EmisorId, Total = r.Count() }).Count();
 
-        //    //return List<contador>;
-        //}
-
+            //return contador;
+        }
 
         // GET: api/Mensajes/bysala/5
         [HttpGet("bysala/{id}", Name = "bysala")]

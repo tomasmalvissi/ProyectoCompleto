@@ -57,14 +57,14 @@ namespace RoomService.Controllers
 
             Sala sala = context.Salas.FirstOrDefault(x => x.Id == entrada.IdSala);
             Participante participante = context.Participantes.FirstOrDefault(x => x.Cliente.IdentityUsuario.Email == entrada.Correo);
-            
+
 
 
             if (participante == null)
             {
                 ConsultarAPI consultarAPI = new ConsultarAPI();
                 Cliente cliente = await consultarAPI.GetClienteAsync("epolicardo@bancor.com.ar");
-              
+
                 participante = new Participante
                 {
                     Rol = entrada.rol,
@@ -101,4 +101,3 @@ namespace RoomService.Controllers
         public Roles rol { get; set; }
     }
 }
-
