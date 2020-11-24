@@ -53,7 +53,7 @@ namespace ChatService.Controllers
         [HttpGet("CantPorPart/{idsala}")]
         public dynamic GetCountPorPart(int idsala)
         {
-            return (from m in _context.Mensajes
+            var lista = (from m in _context.Mensajes
                     where m.SalaId == idsala
                     group m by m.EmisorId into grupo
                     select new
@@ -61,6 +61,13 @@ namespace ChatService.Controllers
                         Emisor = grupo.Key,
                         TotalEnviados = grupo.Count()
                     }).ToList();
+
+            if (lista == null)
+            {
+                return NotFound();
+            }
+
+            return lista;
         }
 
         // GET: api/Mensajes/bysala/5
