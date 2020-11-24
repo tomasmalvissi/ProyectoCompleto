@@ -65,8 +65,18 @@ namespace UserService.Controllers
                 Pais = userDetails.Pais
             };
             await PostCliente(newClient);
+            var _empresa = await _context.Empresas.FindAsync(userDetails.IdEmpresa);
 
-            return Ok(new { Message = "User Registration Successful" });
+            UserEMPRESA UserEmpresa = new UserEMPRESA
+            {
+                Empresa = _empresa,
+                Cliente = newClient
+
+            };
+            _context.userEMPRESA.Add(UserEmpresa);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Cliente Registration Successful" });
         }
 
         //REGISTRAR USER EMPRESA
@@ -107,7 +117,7 @@ namespace UserService.Controllers
             };
             await PostEmpresa(newEmpresa);
 
-            return Ok(new { Message = "User Registration Successful" });
+            return Ok(new { Message = "Empresa Registration Successful" });
         }
 
         //POST: LOGEAR USER

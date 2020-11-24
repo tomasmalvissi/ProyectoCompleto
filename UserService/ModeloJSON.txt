@@ -1,7 +1,6 @@
 ﻿Hola, estos son los parametros y valores para poder consumir esta API:
 
---1: CREACION DE USER Y CLIENTE O EMPRESA:	/api/User/register/Empresa
-															 /Cliente
+--1: CREACION DE USER Y EMPRESA:	/api/User/register/Empresa
 	{
 		"UserName": "tomy",
 		"Email": "tom@gmail.com",
@@ -15,13 +14,29 @@
 		"Pais" : "Argentina"
 	}
 
---2 LOGIN DE USER:		/api/User/login
+--2: CREACION DE USER Y CLIENTE:	/api/User/register/Cliente
+ACLARACIÓN SI O SI DEBE HABER UNA EMPRESA CREADA PARA REGISTRAR EL USER CLIENTE (PONERLE EL ID DE LA EMPRESA CREADA)
+	{
+		"UserName": "PedroRodriguez2",
+		"Email": "facun17@gmail.com",
+		"Password": "1234.Fac",
+		"ConfirmPassword": "1234.Fac",
+		"Direccion" : "Alberdi",
+		"Provincia" : "Cordoba",
+		"Pais" : "Argentina",
+		"NombreCompleto" : "Pedro Rodriguezz",
+		"CUIL" : "2141887618",
+		"FechaNac" : "2011-11-15T00:00:00",
+		"idEmpresa":3
+	}
+
+--3 LOGIN DE USER:		/api/User/login
 	{
 		"UserName" : "Tom",
 		"Password" : "Tomy.Dev123"
 	}
 
---3 PUT(Modificar) CLIENTE:	/api/Clientes/{id}
+--4 PUT(Modificar) CLIENTE:	/api/Clientes/{id}
 	{
 		"nombreCompleto": "Aca toy probando hacer un cambio",
 		"cuil": "6666666666",
@@ -34,7 +49,7 @@
 		"dateCreated": "2020-11-20T04:08:27.9301351"
 	}
 
---4 PUT(Modificar) EMPRESA: /api/Empresas/{id}
+--5 PUT(Modificar) EMPRESA: /api/Empresas/{id}
 	{
 		"razonSocial": "EMPRESA SA",
 		"cuit": "2141887618",
