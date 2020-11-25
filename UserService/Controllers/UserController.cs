@@ -67,13 +67,13 @@ namespace UserService.Controllers
             await PostCliente(newClient);
             var _empresa = await _context.Empresas.FindAsync(userDetails.IdEmpresa);
 
-            UserEMPRESA UserEmpresa = new UserEMPRESA
+            ClienteEmpresa ClienteEmpresa = new ClienteEmpresa
             {
                 Empresa = _empresa,
                 Cliente = newClient
 
             };
-            _context.userEMPRESA.Add(UserEmpresa);
+            _context.ClienteEmpresas.Add(ClienteEmpresa);
             await _context.SaveChangesAsync();
 
             return Ok(new { Message = "Cliente Registration Successful" });
